@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entraîneur Accords 7ème V4.15 - Debug Final</title> <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js"></script>
+</head>
+<body>
+    <header class="app-header">
+        <h1>Entraîneur Accords de Septième</h1>
+    </header>
+
+    <div class="main-container">
+        <aside class="settings-panel">
+            <h2><svg></svg> Paramètres</h2>
+            <fieldset> <legend>Mode de Jeu</legend> <div><input type="checkbox" id="timedModeCheckbox" name="timedModeCheckbox"><label for="timedModeCheckbox">Mode Chrono (30s)</label></div> </fieldset>
+            <fieldset> <legend>Accords spécifiques (7èmes)</legend> <div id="specificChordToggles"></div> </fieldset>
+            <fieldset> <legend>Renversements</legend> <div><input type="checkbox" id="enableInversions" name="enableInversions"><label for="enableInversions">Activer</label></div> </fieldset>
+            <fieldset> <legend>Timbre</legend> <div><label for="timbreSelect" class="visually-hidden">Choisir un son :</label><select id="timbreSelect" name="timbreSelect"></select></div> </fieldset>
+            <fieldset> <legend>Statistiques & Scores</legend> <button id="resetStatsBtn" class="button-danger">Réinitialiser Stats & Scores</button> </fieldset>
+        </aside>
+
+        <main class="game-area">
+            <section class="game-info">
+                <div id="globalScoreDisplay">Score: 0</div>
+                <div id="streakDisplay">Série: 0</div>
+                <div id="timerDisplay">Temps: --</div>
+                <div id="highScoreDisplay">Meilleur Chrono: 0</div>
+            </section>
+
+            <section class="play-controls">
+                 <button id="playChordBtn" class="button-primary"> <svg></svg> Nouvel Accord <kbd class="shortcut-key">E</kbd> </button>
+                 <button id="stopChronoBtn" class="button-danger" style="display: none;"> <svg></svg> Stop Chrono <kbd class="shortcut-key">Esc</kbd> </button>
+                 <button id="replayBtn" class="button-secondary" disabled> <svg></svg> Réécouter <kbd class="shortcut-key">R</kbd> </button>
+                 <button id="hintBtn" class="button-hint" disabled> <svg></svg> Indice (Arpège) <kbd class="shortcut-key">I</kbd> </button>
+            </section>
+            <section id="feedback" class="feedback-message">Cliquez sur "Nouvel Accord" pour commencer.</section>
+            <section class="answer-zone">
+                <div id="typeAnswerArea" class="answer-area"> <h3 id="typeInstruction">Type d'accord ?</h3> <div id="typeAnswerButtons" class="answer-buttons type-buttons"></div> </div>
+                <div id="inversionSection" class="answer-area" style="display: none;"> <h3 id="inversionInstruction">Renversement ?</h3> <div id="inversionAnswerButtons" class="answer-buttons inversion-buttons"></div> </div>
+            </section>
+            <section id="statsSection" class="stats-section"> <h2>Statistiques <span id="globalSuccessRate">(Total: --%)</span></h2> <ul id="statsList"></ul> </section>
+        </main>
+    </div>
+
+    <footer class="app-footer"> <p>&copy; 2025 Louis Absil</p> </footer>
+    <script src="script.js"></script>
+</body>
+</html>
